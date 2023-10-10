@@ -49,23 +49,23 @@ function App() {
   };
   let content = (
     <div className=" flex flex-col items-center content ">
-      <div className="bg-red-100 center">Location: {location}</div>
-      <div>Temperature: {temperatue}</div>
-      <div>Weather: {weather}</div>
-      <div>windSpeed: {windSpeed}</div>
+      <div className="text-2xl" >{location}</div>
+      <div className="text-xl">Temperature: {temperatue}</div>
+      <div  className="text-xl">Weather: {weather}</div>
+      <div className="text-xl">windSpeed: {windSpeed}</div>
     </div>
   );
   let errorMessage = <h2>city not found.</h2>;
 
   return (
-    <div className="  flex flex-col items-center  ">
-      <h1 className="text-2xl m-4  ">Weather App</h1>
+    <div className="  flex flex-col items-center ">
+      <h1 className="text-3xl m-4  ">Weather App</h1>
       <div className="  flex flex-row justify-center ">
         <form className="p-1   " onSubmit={handleCityNameFormSubmit}>
           <input
             className="border rounded border-blue-400 "
             value={cityname}
-            placeholder="Enter City Name.."
+            placeholder="Enter City Name...     "
             onChange={handleCityNameChange}
           />
         </form>
@@ -76,7 +76,6 @@ function App() {
           search
         </button>
       </div>
-
       {iserror && errorMessage}
       {!isloading && content}
     </div>
