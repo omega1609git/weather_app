@@ -1,0 +1,19 @@
+body{
+    /* content: center; */
+}
+
+.content{
+    margin-top: 50px;
+}
+
+
+.button{
+    padding: 5px;
+}
+.container{
+    height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

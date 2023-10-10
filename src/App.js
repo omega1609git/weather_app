@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./App.css";
 
 function App() {
   const [location, setLocation] = useState(null);
@@ -8,7 +9,7 @@ function App() {
   const [windSpeed, setWindSpeed] = useState(null);
   const [cityname, setCityname] = useState("");
   const [iserror, setIsError] = useState(false);
-  const [isloading,setIsloading] = useState(true);
+  const [isloading, setIsloading] = useState(true);
 
   useEffect(() => {}, [location]);
 
@@ -33,7 +34,6 @@ function App() {
         setIsError(false);
       })
       .catch((error) => {
-        // console.log("error", error);
         setIsError(true);
       });
   };
@@ -48,26 +48,37 @@ function App() {
     setIsloading(true);
   };
   let content = (
-    <>
-      <div>Location: {location}</div>
+    <div className=" flex flex-col items-center content ">
+      <div className="bg-red-100 center">Location: {location}</div>
       <div>Temperature: {temperatue}</div>
       <div>Weather: {weather}</div>
       <div>windSpeed: {windSpeed}</div>
-    </>
+    </div>
   );
-  let errorMessage= <h2>city not found.</h2>
+  let errorMessage = <h2>city not found.</h2>;
 
   return (
-    <div>
-      <form onSubmit={handleCityNameFormSubmit}>
-        <h2>Weather</h2>
-        <label>city</label>
-        <input value={cityname} onChange={handleCityNameChange} />
-      </form>
-      <button onClick={search}>search</button>
-      {iserror && errorMessage }
-      { !isloading &&  content}
-      
+    <div className="  flex flex-col items-center  ">
+      <h1 className="text-2xl m-4  ">Weather App</h1>
+      <div className="  flex flex-row justify-center ">
+        <form className="p-1   " onSubmit={handleCityNameFormSubmit}>
+          <input
+            className="border rounded border-blue-400 "
+            value={cityname}
+            placeholder="Enter City Name.."
+            onChange={handleCityNameChange}
+          />
+        </form>
+        <button
+          className="button bg-blue-500 rounded-md border text-white   "
+          onClick={search}
+        >
+          search
+        </button>
+      </div>
+
+      {iserror && errorMessage}
+      {!isloading && content}
     </div>
   );
 }
